@@ -1,25 +1,37 @@
 ---
 title: "Reproducible Research: Peer Assessment 1"
+author: Christopher A. Mejia
 output: 
   html_document:
+    toc: true
+    number_sections: true
     keep_md: true
 ---
 
+Synopsis
+========
 
-## Loading and preprocessing the data
+Loading and Preprocessing the Data
+==================================
 
-
-
-## What is mean total number of steps taken per day?
-
-
-
-## What is the average daily activity pattern?
+Analyses
+========
 
 
+Mean Total Number of Steps Taken per Day
+----------------------------------------
 
-## Imputing missing values
+
+Average Daily Activity Pattern
+------------------------------
+
+
+Imputing Missing Values
+-----------------------
 
 
 
-## Are there differences in activity patterns between weekdays and weekends?
+Differences in Activity Patterns between Weekdays and Weekends
+--------------------------------------------------------------
+
+
