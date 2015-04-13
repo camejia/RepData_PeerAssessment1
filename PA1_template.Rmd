@@ -71,7 +71,7 @@ ok <- complete.cases(activity)
 incompleteCases <- sum(!ok)
 ```
 
-The total number of missing values (i.e. the total number of rows with NA's) is `r incompleteCases`.  Since we have already calculated a data frame containing the mean number of steps for each 5-minute interval, we will use this data frame along with R's merge command to fill in the missing values.
+The total number of missing values (i.e. the total number of rows with NA's) is `r incompleteCases`.  Since we have already calculated a data frame containing the mean number of steps for each 5-minute interval, we will use this data frame along with R's merge command to fill in the missing values.  The merged data set will include a column for the mean number of steps for the corresponding 5-minute interval; if the actual data for that 5-minute interval for a particular day is missing, it is filled in with the mean value.
 
 ```{r}
 imputed <- merge(activity, meanStepsByInterval, by = "interval")

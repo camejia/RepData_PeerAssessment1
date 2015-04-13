@@ -20,7 +20,7 @@ activity <- read.csv("activity.csv", header = TRUE,
                      colClasses = c(NA, "Date", NA))
 ```
 
-The data for this study was downloaded from this link: [Activity monitoring data](https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip) on Sun Apr 12 18:42:13 2015.  Note that the date column was converted to Date type as part of the read.csv command.
+The data for this study was downloaded from this link: [Activity monitoring data](https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip) on Sun Apr 12 18:50:39 2015.  Note that the date column was converted to Date type as part of the read.csv command.
 
 Analyses
 ========
@@ -78,7 +78,7 @@ ok <- complete.cases(activity)
 incompleteCases <- sum(!ok)
 ```
 
-The total number of missing values (i.e. the total number of rows with NA's) is 2304.  Since we have already calculated a data frame containing the mean number of steps for each 5-minute interval, we will use this data frame along with R's merge command to fill in the missing values.
+The total number of missing values (i.e. the total number of rows with NA's) is 2304.  Since we have already calculated a data frame containing the mean number of steps for each 5-minute interval, we will use this data frame along with R's merge command to fill in the missing values.  The merged data set will include a column for the mean number of steps for the corresponding 5-minute interval; if the actual data for that 5-minute interval for a particular day is missing, it is filled in with the mean value.
 
 
 ```r

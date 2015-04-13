@@ -82,7 +82,7 @@ dateDownloaded &lt;- date()
 unzip(&quot;repdata-data-activity.zip&quot;)
 activity &lt;- read.csv(&quot;activity.csv&quot;, header = TRUE,
                      colClasses = c(NA, &quot;Date&quot;, NA))</code></pre>
-<p>The data for this study was downloaded from this link: <a href="https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip">Activity monitoring data</a> on Sun Apr 12 18:42:13 2015. Note that the date column was converted to Date type as part of the read.csv command.</p>
+<p>The data for this study was downloaded from this link: <a href="https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip">Activity monitoring data</a> on Sun Apr 12 18:50:39 2015. Note that the date column was converted to Date type as part of the read.csv command.</p>
 </div>
 <div id="analyses" class="section level1">
 <h1><span class="header-section-number">3</span> Analyses</h1>
@@ -113,7 +113,7 @@ qplot(interval, steps, data = meanStepsByInterval, geom = &quot;line&quot;,
 <p>Analyses up to this point have ignored missing values in the dataset.</p>
 <pre class="r"><code>ok &lt;- complete.cases(activity)
 incompleteCases &lt;- sum(!ok)</code></pre>
-<p>The total number of missing values (i.e. the total number of rows with NA’s) is 2304. Since we have already calculated a data frame containing the mean number of steps for each 5-minute interval, we will use this data frame along with R’s merge command to fill in the missing values.</p>
+<p>The total number of missing values (i.e. the total number of rows with NA’s) is 2304. Since we have already calculated a data frame containing the mean number of steps for each 5-minute interval, we will use this data frame along with R’s merge command to fill in the missing values. The merged data set will include a column for the mean number of steps for the corresponding 5-minute interval; if the actual data for that 5-minute interval for a particular day is missing, it is filled in with the mean value.</p>
 <pre class="r"><code>imputed &lt;- merge(activity, meanStepsByInterval, by = &quot;interval&quot;)
 imputed$steps.x[is.na(imputed$steps.x)] &lt;- imputed$steps.y[is.na(imputed$steps.x)]
 names(imputed)[names(imputed) == &quot;steps.x&quot;] &lt;- &quot;steps&quot;
