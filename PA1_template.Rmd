@@ -71,7 +71,7 @@ ok <- complete.cases(activity)
 incompleteCases <- sum(!ok)
 ```
 
-The total number of missing values (i.e. the total number of rows with NA's) is `r incompleteCases`.  Since we have already calculated a data frame containing the mean number of steps for each 5-minute interval, we will use this data frame along with R's merge command to fill in the missing values.  The merged data set will include a column for the mean number of steps for the corresponding 5-minute interval; if the actual data for that 5-minute interval for a particular day is missing, it is filled in with the mean value.
+The total number of missing values (i.e. the total number of rows with NA's) is `r incompleteCases`.  Since we have already calculated a data frame containing the mean number of steps for each 5-minute interval, we will use this data frame along with R's merge command to fill in the missing values.  That is, if a value is missing, the value will be filled in using the mean number of steps for the same 5-minute interval based on valid data.  The merged data set will include a column for the mean number of steps for the corresponding 5-minute interval; if the actual data for that 5-minute interval for a particular day is missing, it is filled in with the mean value.
 
 ```{r}
 imputed <- merge(activity, meanStepsByInterval, by = "interval")
@@ -87,7 +87,7 @@ impTotalStepsByDate <- aggregate(steps ~ date, data = imputed, FUN = sum)
 qplot(steps, data = impTotalStepsByDate, geom = "histogram",
       main = "Total Number of Steps Taken per Day\n(with imputed missing values)") 
 meanImp <- as.character(mean(impTotalStepsByDate$steps))
-medianImp <- median(impTotalStepsByDate$steps)
+medianImp <- as.character(median(impTotalStepsByDate$steps))
 ```
 
 Now, with the imputed missing data, the mean of the total number of steps taken per day is `r meanImp`, and the median of the total number of steps taken per day is `r medianImp`.  The mean is the same as our previous answer, however the median is not; in fact the median is now equal to the mean.
